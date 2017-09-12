@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="18dp"
         tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:onClick="pickDate"/>
 
 </android.support.constraint.ConstraintLayout>
