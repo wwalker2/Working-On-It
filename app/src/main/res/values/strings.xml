@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Working_On_It</string>
     <string name="textview">TextView</string>
+    <string name="datedisplay">TextView</string>
+    <string name="dateText">TextView</string>
 </resources>

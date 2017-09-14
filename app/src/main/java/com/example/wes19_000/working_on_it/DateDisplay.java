@@ -13,9 +13,9 @@ public class DateDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_date_display);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainMenu.EXTRA_MESSAGE);
+        //String message = intent.getStringExtra(MainMenu.EXTRA_MESSAGE);
 
         TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(message);
+        //textView.setText(message);
     }
 }
