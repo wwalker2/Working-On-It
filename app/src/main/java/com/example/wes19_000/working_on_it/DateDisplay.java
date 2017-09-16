@@ -16,6 +16,6 @@ public class DateDisplay extends AppCompatActivity {
         //String message = intent.getStringExtra(MainMenu.EXTRA_MESSAGE);
 
         TextView textView = (TextView) findViewById(R.id.textView);
-        //textView.setText(message);
+        textView.setText(intent.getStringExtra("selectedDate"));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.wes19_000.working_on_it;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,13 +19,19 @@ public class MainMenu extends AppCompatActivity  {
         datePicker.init(2017, 9, 13, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
+                String date = (monthOfYear) + "/" + dayOfMonth + "/" + year;
                 dateText.setText(date);
+                openDateDisplay(view,date);
             }
         });
 
         dateText = (TextView)findViewById(R.id.textView2);
     }
 
+    public void openDateDisplay(View view, String date){
+        Intent i = new Intent(this, DateDisplay.class);
+        i.putExtra("selectedDate", date);
+        startActivity(i);
+    }
 
 }
