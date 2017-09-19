@@ -24,8 +24,9 @@ public class DateDisplay extends AppCompatActivity {
         //textView.setText(intent.getStringExtra("selectedDate"));
     }
 
-    /*public void saveInfo(View view){
+    public void saveInfo(View view){
+        EditText text = (EditText)findViewById(R.id.name);
         JobEntry job = new JobEntry(text.getText().toString());
         //job.setClientName(text.getText().toString());
-    }*/
+    }
 }
