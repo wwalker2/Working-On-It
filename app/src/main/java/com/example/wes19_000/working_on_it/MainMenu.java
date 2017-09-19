@@ -7,19 +7,22 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 public class MainMenu extends AppCompatActivity  {
     private DatePicker datePicker;
     private TextView dateText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         datePicker = (DatePicker) findViewById(R.id.datePicker2);
-        datePicker.init(2017, 9, 13, new DatePicker.OnDateChangedListener() {
+        datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String date = (monthOfYear) + "/" + dayOfMonth + "/" + year;
+                String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
                 dateText.setText(date);
                 openDateDisplay(view,date);
             }

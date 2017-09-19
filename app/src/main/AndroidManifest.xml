@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DateDisplay"
+            android:label="@string/dateText"
             android:parentActivityName=".MainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
