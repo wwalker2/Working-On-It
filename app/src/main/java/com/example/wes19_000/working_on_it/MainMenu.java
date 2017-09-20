@@ -11,8 +11,6 @@ import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity  {
     private DatePicker datePicker;
-    private TextView dateText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +21,9 @@ public class MainMenu extends AppCompatActivity  {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 String date = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year;
-                dateText.setText(date);
                 openDateDisplay(view,date);
             }
         });
-
-        dateText = (TextView)findViewById(R.id.textView2);
     }
 
     public void openDateDisplay(View view, String date){

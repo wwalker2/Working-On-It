@@ -34,13 +34,37 @@
             tools:ignore="UselessLeaf">
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/clientName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Client Name"
                 android:inputType="textPersonName"
-                android:text="Name"
                 tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/clientAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/client_address"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/clientPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/client_phone"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/jobDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/job_description"
+                android:inputType="textMultiLine" />
 
         </LinearLayout>
     </ScrollView>

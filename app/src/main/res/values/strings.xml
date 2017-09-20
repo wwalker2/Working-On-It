@@ -4,4 +4,7 @@
     <string name="datedisplay">TextView</string>
     <string name="dateText">TextView</string>
     <string name="add_client">Add Client</string>
+    <string name="job_description">Job Description</string>
+    <string name="client_address">Client Address</string>
+    <string name="client_phone">Client Phone</string>
 </resources>

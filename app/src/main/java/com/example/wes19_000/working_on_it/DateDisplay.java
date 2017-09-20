@@ -25,8 +25,16 @@ public class DateDisplay extends AppCompatActivity {
     }
 
     public void saveInfo(View view){
-        EditText text = (EditText)findViewById(R.id.name);
-        JobEntry job = new JobEntry(text.getText().toString());
-        //job.setClientName(text.getText().toString());
+        EditText nameText = (EditText)findViewById(R.id.clientName);
+        EditText addressText = (EditText)findViewById(R.id.clientAddress);
+        EditText phoneText = (EditText)findViewById(R.id.clientPhone);
+        EditText jobText = (EditText)findViewById(R.id.jobDescription);
+
+        JobEntry job = new JobEntry();
+
+        job.setClientName(nameText.getText().toString());
+        job.setClientAddress(addressText.getText().toString());
+        job.setClientPhone(phoneText.getText().toString());
+        job.setJobDescription(jobText.getText().toString());
     }
 }
