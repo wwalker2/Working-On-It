@@ -7,4 +7,7 @@
     <string name="job_description">Job Description</string>
     <string name="client_address">Client Address</string>
     <string name="client_phone">Client Phone</string>
+    <string name="pay">Pay</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
 </resources>
