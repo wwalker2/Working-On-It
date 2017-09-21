@@ -10,4 +10,5 @@
     <string name="pay">Pay</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
+    <string name="required_tools">Required Tools</string>
 </resources>

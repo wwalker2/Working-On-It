@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.TextView;
 
-import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity  {
     private DatePicker datePicker;
@@ -27,7 +25,7 @@ public class MainMenu extends AppCompatActivity  {
     }
 
     public void openDateDisplay(View view, String date){
-        Intent i = new Intent(this, DateDisplay.class);
+        Intent i = new Intent(this, NewJob.class);
         i.putExtra("selectedDate", date);
         startActivity(i);
     }

@@ -11,7 +11,7 @@ public class JobEntry {
     private String clientAddress;
     private String clientPhone;
     private String jobDescription;
-    private ArrayList<String> toolList;
+    private String[] toolList;
     private double jobPay;
     private String startDate;
     private String endDate;
@@ -21,7 +21,7 @@ public class JobEntry {
         setClientAddress("");
         setClientPhone("");
         setJobDescription("");
-        setToolList(new ArrayList<String>());
+        setToolList(new String[0]);
         setJobPay(0);
         setStartDate("");
         setEndDate("");
@@ -63,11 +63,11 @@ public class JobEntry {
         this.jobDescription = jobDescription;
     }
 
-    public ArrayList<String> getToolList() {
+    public String[] getToolList() {
         return toolList;
     }
 
-    public void setToolList(ArrayList<String> toolList) {
+    public void setToolList(String[] toolList) {
         this.toolList = toolList;
     }
 

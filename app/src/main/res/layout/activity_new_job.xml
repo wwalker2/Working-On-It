@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wes19_000.working_on_it.DateDisplay">
+    tools:context="com.example.wes19_000.working_on_it.NewJob">
 
     <ScrollView
         android:layout_width="358dp"
@@ -53,6 +53,14 @@
                 android:ems="10"
                 android:hint="@string/job_description"
                 android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/required_tools"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/payment"
