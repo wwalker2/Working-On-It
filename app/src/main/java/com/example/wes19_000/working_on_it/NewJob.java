@@ -15,19 +15,25 @@ public class NewJob extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_job);
+        setTitle("Add New Client");
 
         Intent intent = getIntent();
-        setTitle(intent.getStringExtra("selectedDate"));
+
+        EditText startDate = (EditText)findViewById(R.id.startDate);
+        startDate.setText(intent.getStringExtra("selectedDate"));
     }
 
     public void saveInfo(View view){
+
+
+
         EditText nameText = (EditText)findViewById(R.id.clientName);
         EditText addressText = (EditText)findViewById(R.id.clientAddress);
         EditText phoneText = (EditText)findViewById(R.id.clientPhone);
         EditText jobText = (EditText)findViewById(R.id.jobDescription);
         EditText toolText = (EditText)findViewById(R.id.tools);
         EditText payText = (EditText)findViewById(R.id.payment);
-        EditText startDate = (EditText)findViewById(R.id.startDate);
+
         EditText endDate = (EditText)findViewById(R.id.endDate);
 
         JobEntry job = new JobEntry();
@@ -42,7 +48,7 @@ public class NewJob extends AppCompatActivity {
         job.setJobDescription(jobText.getText().toString());
         job.setToolList(tools);
         job.setJobPay(Double.parseDouble(payText.getText().toString()));
-        job.setStartDate(startDate.getText().toString());
+        //job.setStartDate();
         job.setEndDate(endDate.getText().toString());
     }
 }

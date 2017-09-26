@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="saveInfo"
-                android:text="@string/add_client"
+                android:text="@string/submit"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="265dp"
                 tools:layout_editor_absoluteY="447dp" />
