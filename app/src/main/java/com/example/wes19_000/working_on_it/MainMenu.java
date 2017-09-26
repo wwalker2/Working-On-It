@@ -25,7 +25,7 @@ public class MainMenu extends AppCompatActivity  {
     }
 
     public void openDateDisplay(View view, String date){
-        Intent i = new Intent(this, NewJob.class);
+        Intent i = new Intent(this, JobList.class);
         i.putExtra("selectedDate", date);
         startActivity(i);
     }

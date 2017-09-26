@@ -17,10 +17,10 @@ public class NewJob extends AppCompatActivity {
         setContentView(R.layout.activity_new_job);
         setTitle("Add New Client");
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
-        EditText startDate = (EditText)findViewById(R.id.startDate);
-        startDate.setText(intent.getStringExtra("selectedDate"));
+        //EditText startDate = (EditText)findViewById(R.id.startDate);
+        //startDate.setText(intent.getStringExtra("selectedDate"));
     }
 
     public void saveInfo(View view){
