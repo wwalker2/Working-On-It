@@ -13,11 +13,13 @@ public class JobList extends AppCompatActivity {
         setContentView(R.layout.activity_job_list);
 
         Intent intent = getIntent();
-        setTitle(intent.getStringExtra("selectedDate"));
+        String thisDate = intent.getStringExtra("selectedDate");
+        setTitle(thisDate);
     }
 
     public void addClient(View view){
         Intent intent = new Intent(this, NewJob.class);
+        intent.putExtra("startDate",this.getTitle().toString());
         startActivity(intent);
     }
 }

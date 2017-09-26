@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class NewJob extends AppCompatActivity {
-
+    //private JobEntry job = new JobEntry();
 
 
     @Override
@@ -17,10 +17,11 @@ public class NewJob extends AppCompatActivity {
         setContentView(R.layout.activity_new_job);
         setTitle("Add New Client");
 
-        //Intent intent = getIntent();
 
-        //EditText startDate = (EditText)findViewById(R.id.startDate);
-        //startDate.setText(intent.getStringExtra("selectedDate"));
+        Intent intent = getIntent();
+
+        EditText startDate = (EditText)findViewById(R.id.startDate);
+        startDate.setText(intent.getStringExtra("startDate"));
     }
 
     public void saveInfo(View view){
