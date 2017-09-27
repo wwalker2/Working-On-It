@@ -8,20 +8,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class NewJob extends AppCompatActivity {
-    //private JobEntry job = new JobEntry();
-
+    private JobEntry job = new JobEntry();
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_job);
         setTitle("Add New Client");
-
+        db = new DatabaseHelper(this);
 
         Intent intent = getIntent();
 
         EditText startDate = (EditText)findViewById(R.id.startDate);
         startDate.setText(intent.getStringExtra("startDate"));
+        job.setStartDate(startDate.getText().toString());
     }
 
     public void saveInfo(View view){
@@ -34,14 +35,10 @@ public class NewJob extends AppCompatActivity {
         EditText jobText = (EditText)findViewById(R.id.jobDescription);
         EditText toolText = (EditText)findViewById(R.id.tools);
         EditText payText = (EditText)findViewById(R.id.payment);
-
         EditText endDate = (EditText)findViewById(R.id.endDate);
-
-        JobEntry job = new JobEntry();
 
         //Tools need to me comma separated.
         String[] tools = toolText.getText().toString().split(",");
-
 
         job.setClientName(nameText.getText().toString());
         job.setClientAddress(addressText.getText().toString());
@@ -49,7 +46,6 @@ public class NewJob extends AppCompatActivity {
         job.setJobDescription(jobText.getText().toString());
         job.setToolList(tools);
         job.setJobPay(Double.parseDouble(payText.getText().toString()));
-        //job.setStartDate();
         job.setEndDate(endDate.getText().toString());
     }
 }
