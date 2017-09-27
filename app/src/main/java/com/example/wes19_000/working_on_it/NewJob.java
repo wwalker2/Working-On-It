@@ -26,9 +26,6 @@ public class NewJob extends AppCompatActivity {
     }
 
     public void saveInfo(View view){
-
-
-
         EditText nameText = (EditText)findViewById(R.id.clientName);
         EditText addressText = (EditText)findViewById(R.id.clientAddress);
         EditText phoneText = (EditText)findViewById(R.id.clientPhone);
@@ -47,5 +44,9 @@ public class NewJob extends AppCompatActivity {
         job.setToolList(tools);
         job.setJobPay(Double.parseDouble(payText.getText().toString()));
         job.setEndDate(endDate.getText().toString());
+
+        db.insertJob(job);
+
+        finish();
     }
 }

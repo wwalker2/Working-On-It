@@ -32,10 +32,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertJob(String name){
+    public boolean insertJob(JobEntry job){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
+        contentValues.put("name", job.getClientName());
         db.insert("jobs",null,contentValues);
         return true;
     }

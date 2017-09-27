@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 
 public class JobList extends AppCompatActivity {
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_list);
+        db = new DatabaseHelper(this);
 
         Intent intent = getIntent();
         String thisDate = intent.getStringExtra("selectedDate");
