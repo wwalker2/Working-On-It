@@ -12,10 +12,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DB_NAME = "JobDatabase.db";
-    private static final String TABLE_NAME = "jobs";
-    private static final String ID_COLUMN = "id";
-    private static final String NAME_COLUMN = "name";
+    public static final String DB_NAME = "JobDatabase.db";
+    public static final String TABLE_NAME = "jobs";
+    public static final String ID_COLUMN = "id";
+    public static final String NAME_COLUMN = "name";
 
     public DatabaseHelper(Context context){
        super(context,DB_NAME,null,1);
@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table jobs" + "(name)");
+        db.execSQL("create table jobs" + "(id integer primary key, name text)");
     }
 
     @Override
@@ -35,14 +35,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertJob(JobEntry job){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", job.getClientName());
-        db.insert("jobs",null,contentValues);
+        contentValues.put(this.NAME_COLUMN, job.getClientName());
+        db.insert(this.TABLE_NAME,null,contentValues);
         return true;
     }
 
     public Cursor getData(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("select * from id="+id+"",null);
+        Cursor result = db.rawQuery("SELECT name FROM jobs WHERE id=" +id+"",null);
         return result;
     }
 }
