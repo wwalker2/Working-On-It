@@ -5,30 +5,30 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
 
-/**
- * Created by wes19_000 on 9/26/2017.
- */
+public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
-public class DatabaseHelper extends SQLiteOpenHelper {
-
-    public static final String DB_NAME = "JobDatabase.db";
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "JobEntries.db";
     public static final String TABLE_NAME = "jobs";
-    public static final String ID_COLUMN = "id";
     public static final String NAME_COLUMN = "name";
 
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY," + NAME_COLUMN + " TEXT)";
+    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
     public DatabaseHelper(Context context){
-       super(context,DB_NAME,null,1);
+       super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table jobs" + "(id integer primary key, name text)");
+        db.execSQL(SQL_CREATE_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS jobs");
+        db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getData(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT name FROM jobs WHERE id=" +id+"",null);
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " +TABLE_NAME+" WHERE " +_ID+ " =" +id+"",null);
         return result;
     }
 }
