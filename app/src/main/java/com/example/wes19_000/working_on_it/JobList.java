@@ -34,9 +34,9 @@ public class JobList extends AppCompatActivity {
         super.onRestart();
         TextView clientName = (TextView)findViewById(R.id.todayClientName);
         Cursor cursor = db.getData(0);
-        cursor.moveToFirst();
+        //cursor.moveToFirst();
 
-        clientName.setText(cursor.getColumnIndex(DatabaseHelper.NAME_COLUMN));
+        clientName.setText(cursor.getString(DatabaseHelper.NAME_COLUMN));
         cursor.close();
     }
 }

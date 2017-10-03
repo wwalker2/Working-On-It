@@ -10,6 +10,7 @@ public class NewJob extends AppCompatActivity {
     private JobEntry job = new JobEntry();
     private DatabaseHelper db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
