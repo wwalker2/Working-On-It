@@ -33,10 +33,10 @@ public class JobList extends AppCompatActivity {
     protected void onRestart(){
         super.onRestart();
         TextView clientName = (TextView)findViewById(R.id.todayClientName);
-        Cursor cursor = db.getData(0);
+        Cursor cursor = db.getData(1);
         //cursor.moveToFirst();
 
-        clientName.setText(cursor.getString(DatabaseHelper.NAME_COLUMN));
+        clientName.setText(cursor.getString(0));
         cursor.close();
     }
 }

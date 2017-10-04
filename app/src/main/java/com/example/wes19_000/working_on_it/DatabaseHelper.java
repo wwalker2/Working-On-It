@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
@@ -43,6 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
     public Cursor getData(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " +TABLE_NAME+" WHERE " +_ID+ " =" +id+"",null);
+        result.moveToFirst();
+        Log.d("Query result",result.getString(0));
         return result;
     }
 }
