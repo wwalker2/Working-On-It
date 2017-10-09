@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
     public static final String DATABASE_NAME = "JobEntries.db";
     public static final String TABLE_NAME = "jobs";
     public static final String NAME_COLUMN = "name";
+    
 
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY," + NAME_COLUMN + " TEXT)";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -45,7 +46,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " +TABLE_NAME+" WHERE " +_ID+ " =" +id+"",null);
         result.moveToFirst();
-        Log.d("Query result",result.getString(0));
         return result;
     }
 }

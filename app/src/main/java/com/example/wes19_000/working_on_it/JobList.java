@@ -2,9 +2,12 @@ package com.example.wes19_000.working_on_it;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class JobList extends AppCompatActivity {
@@ -23,20 +26,31 @@ public class JobList extends AppCompatActivity {
 
     }
 
-    public void addClient(View view){
+    public void addClient(View view) {
         Intent intent = new Intent(this, NewJob.class);
-        intent.putExtra("startDate",this.getTitle().toString());
+        intent.putExtra("startDate", this.getTitle().toString());
         startActivity(intent);
     }
 
     @Override
-    protected void onRestart(){
+    protected void onRestart() {
         super.onRestart();
-        TextView clientName = (TextView)findViewById(R.id.todayClientName);
-        Cursor cursor = db.getData(1);
-        //cursor.moveToFirst();
-
+        TextView clientName = newTextField();
+        Cursor cursor = db.getData(11);
         clientName.setText(cursor.getString(0));
         cursor.close();
+    }
+
+    public TextView newTextField() {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.job_layout);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        TextView textView = new TextView(this);
+        textView.setId(0);
+        textView.setLayoutParams(params);
+
+        layout.addView(textView);
+        return textView;
     }
 }
