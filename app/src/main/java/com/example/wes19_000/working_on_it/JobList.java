@@ -36,6 +36,7 @@ public class JobList extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         TextView clientName = newTextField();
+        TextView startDate = newTextField();
         Cursor cursor = db.getDataByDate(this.getTitle().toString());
         clientName.setText(cursor.getString(0));
         cursor.close();

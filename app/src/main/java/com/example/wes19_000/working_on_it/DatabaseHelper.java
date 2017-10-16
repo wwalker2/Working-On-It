@@ -57,9 +57,10 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public Cursor getDataByDate(String startDate){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + ", " + START_DATE_COLUMN + " FROM " +TABLE_NAME+" WHERE " +START_DATE_COLUMN+ " = " +startDate+" ",null);
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " +TABLE_NAME+" WHERE " +START_DATE_COLUMN+ " = \"" +startDate+"\"",null);
         result.moveToFirst();
         Log.d("Column Index ", Integer.toString(result.getColumnIndex(START_DATE_COLUMN)));
+        Log.d("Query Result ", result.getString(0));
         return result;
     }
 }
