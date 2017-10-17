@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -35,10 +36,12 @@ public class JobList extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        TextView clientName = newTextField();
-        TextView startDate = newTextField();
         Cursor cursor = db.getDataByDate(this.getTitle().toString());
-        clientName.setText(cursor.getString(0));
+        do {
+            TextView clientName = newTextField();
+            clientName.setText(cursor.getString(0));
+            Log.d("Query Result ", clientName.getText().toString());
+        } while (cursor.moveToNext());
         cursor.close();
     }
 
