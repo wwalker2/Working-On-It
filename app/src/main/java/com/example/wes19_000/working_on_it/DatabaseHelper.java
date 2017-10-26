@@ -10,17 +10,20 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "JobEntries.db";
     public static final String TABLE_NAME = "jobs";
     public static final String NAME_COLUMN = "name";
     public static final String START_DATE_COLUMN = "startDate";
+    public static final String END_DATE_COLUMN = "endDate";
 
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + " " +
             "(" + _ID + " INTEGER PRIMARY KEY, "
             + NAME_COLUMN
             + " TEXT, "
             + START_DATE_COLUMN
+            + " TEXT, "
+            + END_DATE_COLUMN
             + " TEXT)";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -50,15 +53,30 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
     public Cursor getDataBYid(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " +TABLE_NAME+" WHERE " +_ID+ " =" +id+"",null);
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN +
+                " FROM " +TABLE_NAME+
+                " WHERE " +_ID+ " =" +id+"",null);
         result.moveToFirst();
         return result;
     }
 
     public Cursor getDataByDate(String startDate){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " +TABLE_NAME+" WHERE " +START_DATE_COLUMN+ " = \"" +startDate+"\"",null);
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN +
+                " FROM " +TABLE_NAME+
+                " WHERE " +START_DATE_COLUMN+ " = \"" +startDate+"\"",null);
         result.moveToFirst();
         return result;
+    }
+
+    //TODO Get database to output names for all jobs whose endDate is between the startDate and endDate parameters.
+    public Cursor getBetweenDates(String startDate, String endDate){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN +
+                " FROM " +TABLE_NAME+
+                " WHERE " + END_DATE_COLUMN +
+                " BETWEEN \"" +startDate+ "\" AND \"" +endDate+ "\"",null);
+        cursor.moveToFirst();
+        return cursor;
     }
 }

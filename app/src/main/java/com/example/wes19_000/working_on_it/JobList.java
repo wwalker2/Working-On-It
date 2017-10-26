@@ -24,6 +24,15 @@ public class JobList extends AppCompatActivity {
         String thisDate = intent.getStringExtra("selectedDate");
         setTitle(thisDate);
 
+        Cursor results = db.getDataByDate(this.getTitle().toString());
+        if (results.moveToFirst() == true) {
+            do {
+                TextView clientName = newTextField();
+                clientName.setText(results.getString(0));
+                Log.d("Query Result ", clientName.getText().toString());
+            } while (results.moveToNext());
+        }
+        results.close();
 
     }
 
@@ -37,11 +46,11 @@ public class JobList extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Cursor cursor = db.getDataByDate(this.getTitle().toString());
-        do {
-            TextView clientName = newTextField();
-            clientName.setText(cursor.getString(0));
-            Log.d("Query Result ", clientName.getText().toString());
-        } while (cursor.moveToNext());
+        cursor.moveToLast();
+        TextView clientName = newTextField();
+        clientName.setText(cursor.getString(0));
+        Log.d("Query Result ", clientName.getText().toString());
+
         cursor.close();
     }
 

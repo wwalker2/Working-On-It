@@ -37,15 +37,14 @@ public class NewJob extends AppCompatActivity {
         //Tools need to me comma separated.
         String[] tools = toolText.getText().toString().split(",");
 
-
-
+        //TODO Allow the user to return to JobList without entering text in the text fields.
         job.setClientName(nameText.getText().toString());
         /*job.setClientAddress(addressText.getText().toString());
         job.setClientPhone(phoneText.getText().toString());
         job.setJobDescription(jobText.getText().toString());
         job.setToolList(tools);
-        job.setJobPay(Double.parseDouble(payText.getText().toString()));
-        job.setEndDate(endDate.getText().toString());*/
+        job.setJobPay(Double.parseDouble(payText.getText().toString()));*/
+        job.setEndDate(endDate.getText().toString());
 
         db.insertJob(job);
 
