@@ -24,7 +24,8 @@ public class JobList extends AppCompatActivity {
         String thisDate = intent.getStringExtra("selectedDate");
         setTitle(thisDate);
 
-        Cursor results = db.getDataByDate(this.getTitle().toString());
+        //Cursor results = db.getDataByDate(this.getTitle().toString());
+        Cursor results = db.getBetweenDates(this.getTitle().toString());
         if (results.moveToFirst() == true) {
             do {
                 TextView clientName = newTextField();
@@ -45,7 +46,7 @@ public class JobList extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        Cursor cursor = db.getDataByDate(this.getTitle().toString());
+        Cursor cursor = db.getBetweenDates(this.getTitle().toString());
         cursor.moveToLast();
         TextView clientName = newTextField();
         clientName.setText(cursor.getString(0));

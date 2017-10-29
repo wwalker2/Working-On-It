@@ -47,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
         ContentValues contentValues = new ContentValues();
         contentValues.put(this.NAME_COLUMN, job.getClientName());
         contentValues.put(this.START_DATE_COLUMN, job.getStartDate());
+        contentValues.put(this.END_DATE_COLUMN, job.getEndDate());
         db.insert(this.TABLE_NAME,null,contentValues);
         return true;
     }
@@ -69,13 +70,14 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
         return result;
     }
 
-    //TODO Get database to output names for all jobs whose endDate is between the startDate and endDate parameters.
-    public Cursor getBetweenDates(String startDate, String endDate){
+    //TODO Prevent jobs from appearing on days that are not between that job's EndDate and StartDate.
+    public Cursor getBetweenDates(String currentDate){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN +
                 " FROM " +TABLE_NAME+
-                " WHERE " + END_DATE_COLUMN +
-                " BETWEEN \"" +startDate+ "\" AND \"" +endDate+ "\"",null);
+                " WHERE " + END_DATE_COLUMN + " BETWEEN \'" +currentDate+ "\'" +
+                " AND \'" +END_DATE_COLUMN+ "\'",null);
+                //" AND \"" +START_DATE_COLUMN+ "\" <= \"" + currentDate + "\"",null);
         cursor.moveToFirst();
         return cursor;
     }
