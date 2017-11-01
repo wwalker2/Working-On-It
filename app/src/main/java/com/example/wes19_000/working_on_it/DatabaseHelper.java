@@ -71,13 +71,14 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
     }
 
     //TODO Prevent jobs from appearing on days that are not between that job's EndDate and StartDate.
-    public Cursor getBetweenDates(String currentDate){
+    //The problem is that when the selectedDate is less then the EndDate the names will appear.
+    public Cursor getBetweenDates(String selectedDate){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN +
                 " FROM " +TABLE_NAME+
-                " WHERE " + END_DATE_COLUMN + " BETWEEN \'" +currentDate+ "\'" +
-                " AND \'" +END_DATE_COLUMN+ "\'",null);
-                //" AND \"" +START_DATE_COLUMN+ "\" <= \"" + currentDate + "\"",null);
+                " WHERE (" + END_DATE_COLUMN + " BETWEEN \"" +selectedDate+ "\"" + " AND " +END_DATE_COLUMN+ ")"
+                + " AND (\"" +selectedDate+ "\" >= " +START_DATE_COLUMN+ ")"
+                ,null);
         cursor.moveToFirst();
         return cursor;
     }
