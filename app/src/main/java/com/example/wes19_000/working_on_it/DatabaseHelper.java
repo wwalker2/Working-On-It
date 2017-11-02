@@ -70,8 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
         return result;
     }
 
-    //TODO Prevent jobs from appearing on days that are not between that job's EndDate and StartDate.
-    //The problem is that when the selectedDate is less then the EndDate the names will appear.
+
     public Cursor getBetweenDates(String selectedDate){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN +
