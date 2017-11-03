@@ -5,44 +5,80 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+import android.util.Log;
 
-/**
- * Created by wes19_000 on 9/26/2017.
- */
+public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "JobEntries.db";
+    public static final String TABLE_NAME = "jobs";
+    public static final String NAME_COLUMN = "name";
+    public static final String START_DATE_COLUMN = "startDate";
+    public static final String END_DATE_COLUMN = "endDate";
 
-    private static final String DB_NAME = "JobDatabase.db";
-    private static final String TABLE_NAME = "jobs";
-    private static final String ID_COLUMN = "id";
-    private static final String NAME_COLUMN = "name";
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + " " +
+            "(" + _ID + " INTEGER PRIMARY KEY, "
+            + NAME_COLUMN
+            + " TEXT, "
+            + START_DATE_COLUMN
+            + " TEXT, "
+            + END_DATE_COLUMN
+            + " TEXT)";
+    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     public DatabaseHelper(Context context){
-       super(context,DB_NAME,null,1);
+       super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table jobs" + "(name)");
+        db.execSQL(SQL_CREATE_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS jobs");
+        db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
     public boolean insertJob(JobEntry job){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", job.getClientName());
-        db.insert("jobs",null,contentValues);
+        contentValues.put(this.NAME_COLUMN, job.getClientName());
+        contentValues.put(this.START_DATE_COLUMN, job.getStartDate());
+        contentValues.put(this.END_DATE_COLUMN, job.getEndDate());
+        db.insert(this.TABLE_NAME,null,contentValues);
         return true;
     }
 
-    public Cursor getData(int id){
+    public Cursor getDataBYid(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("select * from id="+id+"",null);
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN +
+                " FROM " +TABLE_NAME+
+                " WHERE " +_ID+ " =" +id+"",null);
+        result.moveToFirst();
         return result;
+    }
+
+    public Cursor getDataByDate(String startDate){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN +
+                " FROM " +TABLE_NAME+
+                " WHERE " +START_DATE_COLUMN+ " = \"" +startDate+"\"",null);
+        result.moveToFirst();
+        return result;
+    }
+
+
+    public Cursor getBetweenDates(String selectedDate){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN +
+                " FROM " +TABLE_NAME+
+                " WHERE (" + END_DATE_COLUMN + " BETWEEN \"" +selectedDate+ "\"" + " AND " +END_DATE_COLUMN+ ")"
+                + " AND (\"" +selectedDate+ "\" >= " +START_DATE_COLUMN+ ")"
+                ,null);
+        cursor.moveToFirst();
+        return cursor;
     }
 }
