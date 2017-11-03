@@ -34,12 +34,9 @@ public class NewJob extends AppCompatActivity {
         EditText payText = (EditText)findViewById(R.id.payment);
         EditText endDate = (EditText)findViewById(R.id.endDate);
 
-        //EditText[] fields = {nameText,addressText,phoneText,jobText,payText,endDate};
-
         //Tools need to me comma separated.
         String[] tools = toolText.getText().toString().split(",");
 
-        //TODO Allow the user to return to JobList without entering text in the text fields.
         if(!nameText.getText().toString().matches("")){
             job.setClientName(nameText.getText().toString());
         }

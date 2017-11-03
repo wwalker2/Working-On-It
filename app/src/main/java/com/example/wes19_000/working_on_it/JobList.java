@@ -67,4 +67,6 @@ public class JobList extends AppCompatActivity {
         layout.addView(textView);
         return textView;
     }
+
+    //TODO Allow the user to edit information on a Job.
 }
