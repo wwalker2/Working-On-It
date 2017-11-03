@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.wes19_000.working_on_it.EditJobScreen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/clientNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Client Name"
+                android:inputType="textPersonName"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/clientAddressEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/client_address"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/clientPhoneEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/client_phone"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/jobDescriptionEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/job_description"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/toolsEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/required_tools"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/paymentEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/pay"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/startDateEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/start_date"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/endDateEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/end_date"
+                android:inputType="date" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

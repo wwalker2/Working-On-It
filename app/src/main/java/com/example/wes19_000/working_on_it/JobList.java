@@ -63,7 +63,12 @@ public class JobList extends AppCompatActivity {
         TextView textView = new TextView(this);
         textView.setId(0);
         textView.setLayoutParams(params);
-
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
         layout.addView(textView);
         return textView;
     }
