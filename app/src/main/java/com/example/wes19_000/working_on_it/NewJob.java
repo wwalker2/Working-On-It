@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class NewJob extends AppCompatActivity {
     private JobEntry job = new JobEntry();
     private DatabaseHelper db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +37,33 @@ public class NewJob extends AppCompatActivity {
         //Tools need to me comma separated.
         String[] tools = toolText.getText().toString().split(",");
 
-        job.setClientName(nameText.getText().toString());
-        job.setClientAddress(addressText.getText().toString());
-        job.setClientPhone(phoneText.getText().toString());
-        job.setJobDescription(jobText.getText().toString());
-        job.setToolList(tools);
-        job.setJobPay(Double.parseDouble(payText.getText().toString()));
-        job.setEndDate(endDate.getText().toString());
+        if(!nameText.getText().toString().matches("")){
+            job.setClientName(nameText.getText().toString());
+        }
+
+        if(!addressText.getText().toString().matches("")){
+            job.setClientAddress(addressText.getText().toString());
+        }
+
+        if(!phoneText.getText().toString().matches("")){
+            job.setClientPhone(phoneText.getText().toString());
+        }
+
+        if(!jobText.getText().toString().matches("")){
+            job.setJobDescription(jobText.getText().toString());
+        }
+
+        if(!toolText.getText().toString().matches("")){
+            job.setToolList(tools);
+        }
+
+        if(!payText.getText().toString().matches("")) {
+            job.setJobPay(Double.parseDouble(payText.getText().toString()));
+        }
+
+        if(!endDate.getText().toString().matches("")) {
+            job.setEndDate(endDate.getText().toString());
+        }
 
         db.insertJob(job);
 
