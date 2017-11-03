@@ -18,12 +18,18 @@
         <activity
             android:name=".NewJob"
             android:label="@string/dateText"
+            android:parentActivityName=".JobList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainMenu" />
+        </activity>
+        <activity
+            android:name=".JobList"
             android:parentActivityName=".MainMenu">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainMenu" />
         </activity>
-        <activity android:name=".JobList"></activity>
     </application>
 
 </manifest>

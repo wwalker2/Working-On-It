@@ -11,10 +11,12 @@ import android.widget.DatePicker;
 public class MainMenu extends AppCompatActivity  {
     private DatePicker datePicker;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
 
         datePicker = (DatePicker) findViewById(R.id.datePicker2);
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
