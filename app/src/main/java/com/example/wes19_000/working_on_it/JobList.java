@@ -24,7 +24,6 @@ public class JobList extends AppCompatActivity {
         String thisDate = intent.getStringExtra("selectedDate");
         setTitle(thisDate);
 
-        //Cursor results = db.getDataByDate(this.getTitle().toString());
         Cursor results = db.getBetweenDates(this.getTitle().toString());
         if (results.moveToFirst() == true) {
             do {
@@ -66,7 +65,7 @@ public class JobList extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                toEditScreen();
             }
         });
         layout.addView(textView);
@@ -74,4 +73,8 @@ public class JobList extends AppCompatActivity {
     }
 
     //TODO Allow the user to edit information on a Job.
+    private void toEditScreen(){
+        Intent intent = new Intent(this, EditJobScreen.class);
+        startActivity(intent);
+    }
 }
