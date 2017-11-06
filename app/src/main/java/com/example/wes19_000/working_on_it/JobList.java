@@ -59,13 +59,13 @@ public class JobList extends AppCompatActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layout.setOrientation(LinearLayout.VERTICAL);
 
-        TextView textView = new TextView(this);
+        final TextView textView = new TextView(this);
         textView.setId(0);
         textView.setLayoutParams(params);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toEditScreen();
+                toEditScreen(textView.getText().toString());
             }
         });
         layout.addView(textView);
@@ -73,8 +73,9 @@ public class JobList extends AppCompatActivity {
     }
 
     //TODO Allow the user to edit information on a Job.
-    private void toEditScreen(){
+    private void toEditScreen(String name){
         Intent intent = new Intent(this, EditJobScreen.class);
+        intent.putExtra("selectedJob", name);
         startActivity(intent);
     }
 }

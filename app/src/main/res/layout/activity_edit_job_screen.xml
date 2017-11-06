@@ -84,6 +84,7 @@
                 android:id="@+id/saveEdits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="saveEdits"
                 android:text="Save Edits" />
         </LinearLayout>
     </ScrollView>

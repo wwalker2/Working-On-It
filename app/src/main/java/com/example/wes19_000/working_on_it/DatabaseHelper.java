@@ -81,4 +81,22 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
         cursor.moveToFirst();
         return cursor;
     }
+
+    public Cursor updateDataforEdit(String selectedName, String editName){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("UPDATE " + TABLE_NAME +
+        " SET " +NAME_COLUMN+ " = \"" +editName+ "\"" +
+        " WHERE " +NAME_COLUMN+ " = \"" +selectedName+ "\"", null);
+        cursor.moveToFirst();
+        return cursor;
+    }
+
+    public Cursor getData(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result = db.rawQuery("SELECT " + NAME_COLUMN + ", " +START_DATE_COLUMN+ ", " +END_DATE_COLUMN+
+                " FROM " +TABLE_NAME+
+                " WHERE " +NAME_COLUMN+ " = \"" +name+"\"",null);
+        result.moveToFirst();
+        return result;
+    }
 }
