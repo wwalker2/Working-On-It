@@ -34,18 +34,36 @@ public class EditJobScreen extends AppCompatActivity {
 
         Cursor jobEntry = db.getData(name);
         nameField.setText(jobEntry.getString(0));
-        startDate.setText(jobEntry.getString(1));
-        endDate.setText(jobEntry.getString(2));
+        addressText.setText(jobEntry.getString(1));
+        phoneText.setText(jobEntry.getString(2));
+        jobText.setText(jobEntry.getString(3));
+        payText.setText(jobEntry.getString(4));
+        startDate.setText(jobEntry.getString(5));
+        endDate.setText(jobEntry.getString(6));
 
         currentName = jobEntry.getString(0);
         jobEntry.close();
     }
 
+    //Saves any changes to any of the text fields to the database.
     public void saveEdits(View view){
         EditText nameField = (EditText)findViewById(R.id.clientNameEdit);
-        String editedName = nameField.getText().toString();
+        EditText addressText = (EditText)findViewById(R.id.clientAddressEdit);
+        EditText phoneText = (EditText)findViewById(R.id.clientPhoneEdit);
+        EditText jobText = (EditText)findViewById(R.id.jobDescriptionEdit);
+        EditText payText = (EditText)findViewById(R.id.paymentEdit);
+        EditText startDate = (EditText)findViewById(R.id.startDateEdit);
+        EditText endDate = (EditText)findViewById(R.id.endDateEdit);
 
-        Cursor cursor = db.updateDataforEdit(currentName, editedName);
+        String editedName = nameField.getText().toString();
+        String editedAddress = addressText.getText().toString();
+        String editedPhone = phoneText.getText().toString();
+        String editedJob = jobText.getText().toString();
+        double editedPay = Double.parseDouble(payText.getText().toString());
+        String editedStart = startDate.getText().toString();
+        String editedEnd = endDate.getText().toString();
+
+        Cursor cursor = db.updateDataforEdit(currentName, editedName,editedAddress,editedPhone,editedJob,editedPay,editedStart,editedEnd);
         finish();
 
     }

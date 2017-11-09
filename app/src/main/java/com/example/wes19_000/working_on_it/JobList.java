@@ -36,12 +36,14 @@ public class JobList extends AppCompatActivity {
 
     }
 
+    //Method to move to the NewJob activity.
     public void addClient(View view) {
         Intent intent = new Intent(this, NewJob.class);
         intent.putExtra("startDate", this.getTitle().toString());
         startActivity(intent);
     }
 
+    //TODO Fix problem that causes app to crash when JobList restarts.
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -54,6 +56,7 @@ public class JobList extends AppCompatActivity {
         cursor.close();
     }
 
+    //Dynamically creates a new text field for when a new job is added.
     public TextView newTextField() {
         LinearLayout layout = (LinearLayout) findViewById(R.id.job_layout);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -73,6 +76,7 @@ public class JobList extends AppCompatActivity {
     }
 
     //TODO Allow the user to edit information on a Job.
+    //Moves to the EditJobScreen activity.
     private void toEditScreen(String name){
         Intent intent = new Intent(this, EditJobScreen.class);
         intent.putExtra("selectedJob", name);
