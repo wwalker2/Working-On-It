@@ -43,7 +43,6 @@ public class JobList extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //TODO Fix problem that causes app to crash when JobList restarts.
     @Override
     protected void onRestart() {
         super.onRestart();
