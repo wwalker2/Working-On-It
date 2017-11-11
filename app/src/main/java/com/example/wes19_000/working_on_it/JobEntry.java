@@ -1,7 +1,5 @@
 package com.example.wes19_000.working_on_it;
 
-import java.util.ArrayList;
-
 /**
  * Created by wes19_000 on 9/16/2017.
  */
@@ -11,7 +9,7 @@ public class JobEntry {
     private String clientAddress;
     private String clientPhone;
     private String jobDescription;
-    private String[] toolList;
+    private String toolList;
     private double jobPay;
     private String startDate;
     private String endDate;
@@ -21,7 +19,7 @@ public class JobEntry {
         setClientAddress("");
         setClientPhone("");
         setJobDescription("");
-        setToolList(new String[0]);
+        setToolList("");
         setJobPay(0);
         setStartDate("");
         setEndDate("");
@@ -63,11 +61,11 @@ public class JobEntry {
         this.jobDescription = jobDescription;
     }
 
-    public String[] getToolList() {
+    public String getToolList() {
         return toolList;
     }
 
-    public void setToolList(String[] toolList) {
+    public void setToolList(String toolList) {
         this.toolList = toolList;
     }
 

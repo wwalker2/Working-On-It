@@ -37,9 +37,10 @@ public class EditJobScreen extends AppCompatActivity {
         addressText.setText(jobEntry.getString(1));
         phoneText.setText(jobEntry.getString(2));
         jobText.setText(jobEntry.getString(3));
-        payText.setText(jobEntry.getString(4));
-        startDate.setText(jobEntry.getString(5));
-        endDate.setText(jobEntry.getString(6));
+        toolText.setText(jobEntry.getString(4));
+        payText.setText(jobEntry.getString(5));
+        startDate.setText(jobEntry.getString(6));
+        endDate.setText(jobEntry.getString(7));
 
         currentName = jobEntry.getString(0);
         jobEntry.close();
@@ -51,6 +52,7 @@ public class EditJobScreen extends AppCompatActivity {
         EditText addressText = (EditText)findViewById(R.id.clientAddressEdit);
         EditText phoneText = (EditText)findViewById(R.id.clientPhoneEdit);
         EditText jobText = (EditText)findViewById(R.id.jobDescriptionEdit);
+        EditText toolText = (EditText) findViewById(R.id.toolsEdit);
         EditText payText = (EditText)findViewById(R.id.paymentEdit);
         EditText startDate = (EditText)findViewById(R.id.startDateEdit);
         EditText endDate = (EditText)findViewById(R.id.endDateEdit);
@@ -59,11 +61,12 @@ public class EditJobScreen extends AppCompatActivity {
         String editedAddress = addressText.getText().toString();
         String editedPhone = phoneText.getText().toString();
         String editedJob = jobText.getText().toString();
+        String editedTools = toolText.getText().toString();
         double editedPay = Double.parseDouble(payText.getText().toString());
         String editedStart = startDate.getText().toString();
         String editedEnd = endDate.getText().toString();
 
-        Cursor cursor = db.updateDataforEdit(currentName, editedName,editedAddress,editedPhone,editedJob,editedPay,editedStart,editedEnd);
+        Cursor cursor = db.updateDataforEdit(currentName, editedName,editedAddress,editedPhone,editedJob,editedTools,editedPay,editedStart,editedEnd);
         finish();
 
     }

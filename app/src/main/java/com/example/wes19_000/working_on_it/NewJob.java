@@ -34,9 +34,6 @@ public class NewJob extends AppCompatActivity {
         EditText payText = (EditText)findViewById(R.id.payment);
         EditText endDate = (EditText)findViewById(R.id.endDate);
 
-        //Tools need to me comma separated.
-        String[] tools = toolText.getText().toString().split(",");
-
         if(!nameText.getText().toString().matches("")){
             job.setClientName(nameText.getText().toString());
         }
@@ -54,7 +51,7 @@ public class NewJob extends AppCompatActivity {
         }
 
         if(!toolText.getText().toString().matches("")){
-            job.setToolList(tools);
+            job.setToolList(toolText.getText().toString());
         }
 
         if(!payText.getText().toString().matches("")) {
