@@ -70,4 +70,8 @@ public class EditJobScreen extends AppCompatActivity {
         finish();
 
     }
+
+    public void cancel(View view){
+        finish();
+    }
 }

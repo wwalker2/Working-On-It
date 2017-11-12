@@ -85,7 +85,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="saveEdits"
-                android:text="Save Edits" />
+                android:text="@string/save_edits" />
+
+            <Button
+                android:id="@+id/cancel_edits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cancel"
+                android:text="@string/editcancel" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

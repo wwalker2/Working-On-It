@@ -66,4 +66,8 @@ public class NewJob extends AppCompatActivity {
 
         finish();
     }
+
+    public void cancelEntry(View view){
+        finish();
+    }
 }

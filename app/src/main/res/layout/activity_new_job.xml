@@ -96,6 +96,13 @@
                 tools:layout_editor_absoluteX="265dp"
                 tools:layout_editor_absoluteY="447dp" />
 
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cancelEntry"
+                android:text="@string/cancel" />
+
         </LinearLayout>
     </ScrollView>
 
